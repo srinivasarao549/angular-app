@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label "agent1"}
    
     tools {nodejs "node"}
     options {
@@ -10,14 +10,13 @@ pipeline {
         
         stage('Install Dependencies') {
             steps {
-                sh "npm install -g yarn"
-                sh "yarn"
+                sh "npm i"
             }
         }
 
         stage('Build Package') {
             steps {
-                sh "yarn run ci_prod_build"
+                sh "npm run ci_prod_build"
             }
         }
 
